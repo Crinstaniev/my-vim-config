@@ -12,6 +12,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lock
 Plug 'gilligan/vim-lldb'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'lambdalisue/battery.vim'
+Plug 'lervag/vimtex'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
 
 call plug#end()
 
@@ -32,6 +36,11 @@ inoremap <silent><expr> <Tab>
 
 " status line and tab line configuration
 let g:airline#extensions#tabline#enabled = 1
+
+" ===============
+" === AIRLINE ===
+" ===============
+let g:airline_theme='raven'
 
 " NERDTree configuration
 let g:NERDTreeWinPos = "right"
@@ -63,12 +72,14 @@ set wildmenu
 set wrap
 set linebreak
 " set spell " spell checker
-set relativenumber " relative line number
+" set relativenumber " relative line number
 language en_US
 set backspace=indent,eol,start
 set fillchars+=vert:\|
 set tabstop=4
 set shiftwidth=4
+set mouse=a
+set scrolloff=5
 
 " ===============
 " === MAPPING ===
@@ -77,3 +88,8 @@ set shiftwidth=4
 :nmap <C-]> :tabnext<cr>
 :nmap q :q<cr>
 :nmap <C-s> :w<cr>
+:nmap <leader>bn :bnext<cr>
+:nmap <leader>bq :bdelete<cr>
+:nmap <leader>bp :bprevious<cr>
+:nmap <leader>so :source ~/.vimrc<cr>
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
